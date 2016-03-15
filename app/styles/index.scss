@@ -1,0 +1,19 @@
+@import 'bootstrap-overrides';
+$highlight: #f0ad4e;
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+.example-appear {
+  background-color: $highlight;
+}
+
+.example-appear.example-appear-active {
+  background-color: inherit;  
+  @include transition(background-color 1s ease-out);
+}
