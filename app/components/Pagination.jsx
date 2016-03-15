@@ -25,7 +25,7 @@ export default class Pagination extends React.Component {
             {
                 rows.push(
                     <li key={i} className={i == this.props.page ? 'disabled' : ''}>
-                        <a  href="#"  onClick={this.changePage(i)} aria-label="Previous">
+                        <a  href="#"  onClick={this.changePage.bind(this,i)} aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -33,7 +33,7 @@ export default class Pagination extends React.Component {
             }
             rows.push(
                 <li key={i + 1} className={i == this.props.page ? 'active' : ''}>
-                    <a  href="#" onClick={this.changePage(i)}>
+                    <a  href="#" onClick={this.changePage.bind(this,i)}>
                         {i + 1}
                     </a>
                 </li>
@@ -42,7 +42,7 @@ export default class Pagination extends React.Component {
             {
                 rows.push(
                     <li key={i + 2} className={i == this.props.page ? 'disabled' : ''}>
-                        <a href="#"  onClick={this.changePage(i)} aria-label="Next">
+                        <a href="#"  onClick={this.changePage.bind(this,i)} aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
@@ -64,8 +64,8 @@ export default class Pagination extends React.Component {
 }
 
 Pagination.propTypes = { 
-    page: React.PropTypes.number,
-    totalPages: React.PropTypes.number,
+    page: React.PropTypes.number.isRequired,
+    totalPages: React.PropTypes.number.isRequired,
     onPageChange: React.PropTypes.func
 };
 Pagination.defaultProps = { page: 0, totalPages: 0 };

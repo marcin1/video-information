@@ -9,7 +9,7 @@ export default class VideoRecordList extends React.Component {
     }
     
     render() {
-        if (this.props.videoRecords == null) {
+        if (this.props.videoRecordsList == null) {
             return (
                 <div>
                     <div className="alert alert-warning" role="alert">Video records list is empty</div>
@@ -19,7 +19,7 @@ export default class VideoRecordList extends React.Component {
         else {
             return (
                 <div>
-                        {this.props.videoRecords.map((videoRecord) => {
+                        {this.props.videoRecordsList.map((videoRecord) => {
                             return <VideoRecordListItem videoRecord={videoRecord} key={videoRecord.id} />
                         }) }
                 </div>
@@ -27,3 +27,8 @@ export default class VideoRecordList extends React.Component {
         }
     }
 }
+
+VideoRecordList.propTypes = { 
+    videoRecordsList: React.PropTypes.object
+};
+VideoRecordList.defaultProps = { videoRecordsList:null };

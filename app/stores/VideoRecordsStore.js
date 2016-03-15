@@ -5,25 +5,40 @@ import Actions from '../actions/VideoRecordsActions.js';
 class VideoRecordsStore {
   constructor() {
     this.state = { 
-        videoRecords: null,
-        errorMessage: null
+        videoRecordsList: null,
+        videoRecord: null,
+        errorMessage: null,        
     };
 
     this.registerAsync(VideoRecordsSource);
     
     this.bindListeners({
       fetchSucess: Actions.fetchSucess,
-      fetchFailed: Actions.fetchFailed
+      fetchFailed: Actions.fetchFailed,
+      getSucess: Actions.getSucess,
+      getFailed: Actions.getFailed
     });
   }
   
   fetchSucess(videoRecords) {
     this.setState({
-        videoRecords
+        videoRecordsList
     });
   }
   
   fetchFailed(errorMessage){
+      this.setState({
+        errorMessage
+    });
+  }
+  
+  getSucess(videoRecords) {
+    this.setState({
+        videoRecord
+    });
+  }
+  
+  getFailed(errorMessage){
       this.setState({
         errorMessage
     });

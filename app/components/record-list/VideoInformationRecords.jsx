@@ -4,7 +4,6 @@ import VideoRecordsStore from '../../stores/VideoRecordsStore.js';
 import VideoRecordList from './VideoRecordList.jsx';
 import Pagination from '../Pagination.jsx';
 
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class VideoInformationRecords extends React.Component {
     constructor(props) {
@@ -21,24 +20,24 @@ class VideoInformationRecords extends React.Component {
     }
 
     static getPropsFromStores() {
-        return VideoRecordsStore.getState().videoRecords;
+        return VideoRecordsStore.getState().videoRecordsList;
     }
 
     componentDidMount() {
         VideoRecordsStore.fetchVideoRecords(this.state.page, this.pageSize);
     }
     
-    onPageChange(i) {
-       if (i != this.state.page)
+    onPageChange(page) {
+       if (page != this.state.page)
        {
-           //VideoRecordsStore.fetchVideoRecords(i);
+           VideoRecordsStore.fetchVideoRecords(page);
        }
     }
 
     render() {
         return (
             <div>
-                <VideoRecordList videoRecords={this.props.videoRecords}/>
+                <VideoRecordList videoRecordsList={this.props.videoRecordsList}/>
                 <Pagination 
                     page={this.state.page} 
                     totalPages={this.props.totalPages} 

@@ -51,7 +51,7 @@ let VideoRecordsSource = {
     fetchVideoRecords: {
             remote(state, page, pageSize) {
                 return new Promise((resolve, reject) => {
-                    let videoRecords = SourceApi.get();
+                    let videoRecords = SourceApi.fetch();
                     if (videoRecords == null)
                     {
                         SourceApi.set(mockData);
@@ -67,8 +67,18 @@ let VideoRecordsSource = {
             success: Actions.fetchSucess,
             error: Actions.fetchFailedd
     },
+    getVideoRecord: {
+        remote(state, id) {
+            return new Promise((resolve, reject) => {
+                let videoRecord = SourceApi.get(id);                
+                resolve(videoRecord);
+            });
+        },
+        success: Actions.getSucess,
+        error: Actions.getFailed
+    },
     createVideoRecord: {
-        local(state) {
+        remote(state) {
             return new Promise((resolve, reject) => {
                 let videoRecord = state.videoRecord;
                 SourceApi.insert(videoRecord);
@@ -79,7 +89,7 @@ let VideoRecordsSource = {
         error: Actions.createFailed
     },
     updateVideoRecord: {
-        local(state) {
+        remote(state) {
             return new Promise((resolve, reject) => {
                 let videoRecord = state.videoRecord;
                 SourceApi.update(videoRecord);
@@ -90,7 +100,7 @@ let VideoRecordsSource = {
         error: Actions.updateFailed
     },
     deleteVideoRecord: {
-        local(state) {
+        remote(state) {
             return new Promise((resolve, reject) => {
                 let videoRecord = state.videoRecord;
                 SourceApi.delete(videoRecord);
