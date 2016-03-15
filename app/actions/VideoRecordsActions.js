@@ -5,4 +5,4 @@ export default alt.generateActions(
     'updateSucess', 'updateFailed',
     'deleteSucess', 'deleteFailed',
     'fetchSucess','fetchFailed',
-    'getSucess', 'getFailed');
+    'getSucess', 'getFailed', 'create', 'update');

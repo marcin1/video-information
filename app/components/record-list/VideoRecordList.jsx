@@ -1,14 +1,13 @@
 import React from 'react';
 import VideoRecordListItem from './VideoRecordListItem.jsx';
+import Error from '../Error.jsx';
 
 export default class VideoRecordList extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    onDelete(e, id) {
-        e.preventDefault();
-        e.stopPropagation();
+    onDelete(id) {
         if (this.props.onDelete) {
             this.props.onDelete(id);
         }
@@ -36,7 +35,7 @@ export default class VideoRecordList extends React.Component {
 }
 
 VideoRecordList.propTypes = {
-    videoRecordsList: React.PropTypes.object,
+    videoRecordsList: React.PropTypes.array,
     onDelete: React.PropTypes.func
 };
 VideoRecordList.defaultProps = { videoRecordsList: null };

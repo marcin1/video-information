@@ -15,7 +15,7 @@ export default () => {
                 <div className="collapse navbar-collapse" id="menuNavbar">
                     <ul className="nav navbar-nav">
                         <li><Link to="/" activeClassName="active" onlyActiveOnIndex>Video records list</Link></li>
-                        <li><Link to="/edit" activeClassName="active">Create new record</Link></li>
+                        <li><Link to="/create" activeClassName="active">Create new record</Link></li>
                     </ul>
                 </div>
             </div>

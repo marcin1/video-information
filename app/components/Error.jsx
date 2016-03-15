@@ -20,7 +20,7 @@ export default class Error extends React.Component {
     }
 }
 
-VideoRecordList.propTypes = {
+Error.propTypes = {
     message: React.PropTypes.string,
 };
-VideoRecordList.defaultProps = { message: null };
+Error.defaultProps = { message: null };

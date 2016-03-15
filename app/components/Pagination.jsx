@@ -5,11 +5,14 @@ export default class Pagination extends React.Component {
         super(props);
     }
     
-    changePage(e,i) {
-        e.preventDefault();
-        e.stopPropagation();
+    changePage(page,event) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (page < 0 || page >= this.props.totalPages){
+            return;
+        }
         if (this.props.onPageChange){
-            this.props.onPageChange(i);
+            this.props.onPageChange(page);
         }
     }
     
@@ -23,11 +26,11 @@ export default class Pagination extends React.Component {
         let rows = [];
         for (var i = minPage; i <= maxPage;i++)
         {
-            if (i == 0)
+            if (i == minPage)
             {
                 rows.push(
                     <li key={i} className={i == this.props.page ? 'disabled' : ''}>
-                        <a  href="#"  onClick={this.changePage.bind(this,i)} aria-label="Previous">
+                        <a  href="#"  onClick={this.changePage.bind(this,this.props.page - 1)} aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -44,11 +47,11 @@ export default class Pagination extends React.Component {
             {
                 rows.push(
                     <li key={i + 2} className={i == this.props.page ? 'disabled' : ''}>
-                        <a href="#"  onClick={this.changePage.bind(this,i)} aria-label="Next">
+                        <a href="#"  onClick={this.changePage.bind(this,this.props.page + 1)} aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
-                )
+                );
             }
         } 
         return rows;
