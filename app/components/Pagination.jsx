@@ -5,7 +5,9 @@ export default class Pagination extends React.Component {
         super(props);
     }
     
-    changePage(i) {
+    changePage(e,i) {
+        e.preventDefault();
+        e.stopPropagation();
         if (this.props.onPageChange){
             this.props.onPageChange(i);
         }

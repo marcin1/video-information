@@ -33,11 +33,17 @@ class VideoInformationRecords extends React.Component {
            VideoRecordsStore.fetchVideoRecords(page);
        }
     }
+    
+    onDelete(id){
+        VideoRecordsStore.deleteVideoRecord(id);
+    }
 
     render() {
         return (
             <div>
-                <VideoRecordList videoRecordsList={this.props.videoRecordsList}/>
+                <VideoRecordList 
+                    videoRecordsList={this.props.videoRecordsList}
+                    onDelete={this.onDelete.bind(this)}/>
                 <Pagination 
                     page={this.state.page} 
                     totalPages={this.props.totalPages} 

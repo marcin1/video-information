@@ -31,9 +31,9 @@ let VideoRecordsApi = {
             set(records);
         }
     },
-    delete: function(data) {
+    delete: function(id) {
         let records = get();
-        let index = records.findIndex(x => x.id == data.id);
+        let index = records.findIndex(x => x.id == id);
         if (index >= 0) {
             records.splice(index, 1);
             set(records);

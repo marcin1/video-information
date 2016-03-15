@@ -100,11 +100,10 @@ let VideoRecordsSource = {
         error: Actions.updateFailed
     },
     deleteVideoRecord: {
-        remote(state) {
+        remote(state, id) {
             return new Promise((resolve, reject) => {
-                let videoRecord = state.videoRecord;
-                SourceApi.delete(videoRecord);
-                resolve(videoRecord);
+                SourceApi.delete(id);
+                resolve(id);
             });
         },
         success: Actions.deleteSucess,
